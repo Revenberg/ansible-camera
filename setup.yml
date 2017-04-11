@@ -80,20 +80,20 @@
     - name: download file opencv.zip
       get_url:
         url: https://github.com/Itseez/opencv/archive/3.1.0.zip
-        dest: /home/pi/opencv.zip
+        dest: /home/pi/ansible-camera/opencv.zip
     - name: unarchive opencv.zip
       unarchive:
-       src: /home/pi/opencv.zip
+       src: /home/pi/ansible-camera/opencv.zip
        dest: /home/pi/
        remote_src: True
 
     - name: download file opencv_contrib.zip
       get_url:
         url: https://github.com/Itseez/opencv_contrib/archive/3.1.0.zip
-        dest: /home/pi/opencv_contrib.zip
+        dest: /home/pi/ansible-camera/opencv_contrib.zip
     - name: Unarchive opencv_contrib.zip
       unarchive:
-       src: /home/pi/opencv_contrib.zip
+       src: /home/pi/ansible-camera/opencv_contrib.zip
        dest: /home/pi/
        remote_src: True
 
