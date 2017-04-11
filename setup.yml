@@ -1,0 +1,107 @@
+---
+- name: Hello Ansible - quick start
+  hosts: rpi
+  become_user: root
+  become: yes
+
+  tasks:    
+    - name: Update apt-get cache
+      apt: >
+        update_cache=yes
+        cache_valid_time=360
+    
+    - name: Update all packages to the latest version
+      apt: > 
+        upgrade=yes
+
+    - name: install "python-pip" package
+      apt: 
+        name: python-pip
+
+    - name: install "picamera" package
+      pip:
+        name: picamera
+
+    - name: install "build-essential" package
+      apt:
+        name: build-essential
+    - name: install "cmake" package
+      apt:
+        name: cmake 
+    - name: install "pkg-config" package
+      apt:
+        name: pkg-config
+    - name: install "libjpeg-dev" package
+      apt:
+        name: libjpeg-dev
+    - name: install "libtiff5-dev" package
+      apt:
+        name: libtiff5-dev
+    - name: install "libjasper-dev" package
+      apt:
+        name: libjasper-dev
+    - name: install "libpng12-dev" package
+      apt:
+        name: libpng12-dev
+    - name: install "libavcodec-dev" package
+      apt:
+        name: libavcodec-dev
+    - name: install "libavcodec-dev" package
+      apt:
+        name: libavcodec-dev
+    - name: install "libswscale-dev" package
+      apt:
+        name: libswscale-dev
+    - name: install "libv4l-dev" package
+      apt:
+        name: libv4l-dev
+    - name: install "libxvidcore-dev" package
+      apt:
+        name: libxvidcore-dev
+    - name: install "libx264-dev" package
+      apt:
+        name: libx264-dev
+    - name: install "libgtk2.0-dev" package
+      apt:
+        name: libgtk2.0-dev
+    - name: install "libatlas-base-dev" package
+      apt:
+        name: libatlas-base-dev
+    - name: install "gfortran" package
+      apt:
+        name: gfortran
+    - name: install "python2.7-dev" package
+      apt:
+        name: python2.7-dev
+    - name: install "python3-dev" package
+      apt:
+        name: python3-dev
+
+    - name: download file opencv.zip
+      get_url:
+        url: https://github.com/Itseez/opencv/archive/3.1.0.zip
+        dest: /home/pi/opencv.zip
+    - name: unarchive opencv.zip
+      unarchive:
+       src: /home/pi/opencv.zip
+       dest: /home/pi/
+       remote_src: True
+
+    - name: download file opencv_contrib.zip
+      get_url:
+        url: https://github.com/Itseez/opencv_contrib/archive/3.1.0.zip
+        dest: /home/pi/opencv_contrib.zip
+    - name: Unarchive opencv_contrib.zip
+      unarchive:
+       src: /home/pi/opencv_contrib.zip
+       dest: /home/pi/
+       remote_src: True
+
+    - name: download file get-pip.py 
+      get_url:
+        url: https://bootstrap.pypa.io/get-pip.py
+        dest: /home/pi/get-pip.py
+    - name: Run get-pip.py
+      command: /home/pi/get-pip.py
+      args:
+        chdir: /home/pi/    
